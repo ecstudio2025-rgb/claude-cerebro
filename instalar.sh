@@ -73,6 +73,10 @@ for f in CLAUDE.md voz-diego-marca.md anti-patrones-ia-redaccion.md; do
   echo "  $destino"
 done
 
+cp "$REPO/claude/EQUIPO.md" "$CLAUDE/EQUIPO.md"
+printf '\n@%s\n' "$CLAUDE/EQUIPO.md" >> "$CLAUDE/CLAUDE.md"
+echo "  reglas del equipo: $CLAUDE/EQUIPO.md"
+
 if [[ -d "$PRIV/memoria" ]]; then
   cat >> "$CLAUDE/CLAUDE.md" <<EOF
 
@@ -107,13 +111,30 @@ else:
 json.dump(a, open(destino, "w"), indent=2, ensure_ascii=False)
 PY
 
+# Carpeta de trabajo con la configuracion Ruflo (swarm) de Diego
 mkdir -p "$HOME/Claude"
+if [[ ! -f "$HOME/Claude/CLAUDE.md" ]]; then
+  cp "$REPO/claude/proyecto-CLAUDE.md" "$HOME/Claude/CLAUDE.md"; echo "  $HOME/Claude/CLAUDE.md (Ruflo)"
+fi
+
 if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   echo "Instalando Claude Code..."
   curl -fsSL https://claude.ai/install.sh | bash
 fi
+CLAUDE_BIN="$(command -v claude || echo "$HOME/.local/bin/claude")"
+
+# Ruflo como MCP (necesita Node). Si no hay Node, se avisa y se sigue.
+if command -v npx >/dev/null; then
+  if ! "$CLAUDE_BIN" mcp list 2>/dev/null | grep -q claude-flow; then
+    "$CLAUDE_BIN" mcp add --scope user claude-flow -- npx -y @claude-flow/cli@latest >/dev/null 2>&1 \
+      && echo "  Ruflo (claude-flow) conectado" || echo "  Ruflo no se pudo conectar: no pasa nada, Claude funciona igual"
+  fi
+else
+  echo "  Sin Node.js: Ruflo queda para luego (instala Node LTS de nodejs.org y repite esta linea)"
+fi
 
 echo
 echo "Listo. Abre una terminal nueva y lanza:  cd ~/Claude && claude"
-echo "La primera vez te pide iniciar sesion con tu cuenta de Claude y confirmar los plugins."
+echo "La primera vez te pide iniciar sesion: usa la cuenta de Claude del equipo. Despues reinicia el ordenador."
+echo "Instala tambien la extension Claude in Chrome (solo Chrome) e inicia sesion con la misma cuenta."
 echo "No vienen nunca: contraseñas, tokens de los MCP ni acceso SSH al VPS. Eso se pide a Diego."

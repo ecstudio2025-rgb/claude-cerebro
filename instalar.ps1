@@ -94,6 +94,11 @@ foreach ($f in 'CLAUDE.md', 'voz-diego-marca.md', 'anti-patrones-ia-redaccion.md
     Write-Host "  $destino"
 }
 
+Copy-Item -Force (Join-Path $Repo 'claude\EQUIPO.md') (Join-Path $Claude 'EQUIPO.md')
+$EquipoFwd = (Join-Path $Claude 'EQUIPO.md') -replace '\\', '/'
+[System.IO.File]::AppendAllText((Join-Path $Claude 'CLAUDE.md'), "`n@$EquipoFwd`n", $Utf8)
+Write-Host "  reglas del equipo: $EquipoFwd"
+
 if (Test-Path (Join-Path $Priv 'memoria')) {
     $PrivFwd = $Priv -replace '\\', '/'
     $bloque = @"
@@ -136,14 +141,34 @@ if (Test-Path $Settings) {
     Write-Host "  creado $Settings"
 }
 
+# Carpeta de trabajo con la configuracion Ruflo (swarm) de Diego
 New-Item -ItemType Directory -Force -Path (Join-Path $HOME 'Claude') | Out-Null
+$ProyMd = Join-Path $HOME 'Claude\CLAUDE.md'
+if (-not (Test-Path $ProyMd)) {
+    [System.IO.File]::WriteAllText($ProyMd, [System.IO.File]::ReadAllText((Join-Path $Repo 'claude\proyecto-CLAUDE.md'), $Utf8), $Utf8)
+    Write-Host "  $ProyMd (Ruflo)"
+}
 
 if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
     Write-Host 'Instalando Claude Code...'
     Invoke-RestMethod https://claude.ai/install.ps1 | Invoke-Expression
 }
 
+Refrescar-Path
+if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+    Write-Host '  Ruflo se conecta la proxima vez que lances esta linea (Claude aun no esta en el PATH)'
+} elseif (Get-Command npx -ErrorAction SilentlyContinue) {
+    $ya = (& claude mcp list 2>$null) -join ' '
+    if ($ya -notmatch 'claude-flow') {
+        & claude mcp add --scope user claude-flow -- npx -y '@claude-flow/cli@latest' *> $null
+        if ($LASTEXITCODE -eq 0) { Write-Host '  Ruflo (claude-flow) conectado' } else { Write-Host '  Ruflo no se pudo conectar: Claude funciona igual' }
+    }
+} else {
+    Write-Host '  Sin Node.js: Ruflo queda para luego (winget install OpenJS.NodeJS.LTS y repite esta linea)'
+}
+
 Write-Host ''
 Write-Host "Listo. Abre una terminal nueva, entra en $HOME\Claude y lanza: claude"
-Write-Host 'La primera vez te pide iniciar sesion y confirmar los plugins.'
+Write-Host 'La primera vez te pide iniciar sesion: usa la cuenta de Claude del equipo. Despues reinicia el ordenador.'
+Write-Host 'Instala tambien la extension Claude in Chrome (solo Chrome) e inicia sesion con la misma cuenta.'
 Write-Host 'No vienen nunca: contrasenas, tokens de los MCP ni acceso SSH al VPS. Eso se pide a Diego.'

@@ -37,6 +37,9 @@ for f in CLAUDE.md voz-diego-marca.md anti-patrones-ia-redaccion.md; do
   if grep -qxF "$f" "$PRIV/excluir.txt"; then rm -f "claude/$f"; else cp "$SRC/$f" "claude/$f"; fi
 done
 
+# CLAUDE.md del proyecto (Ruflo) para ~/Claude del equipo
+cp "$HOME/Claude/CLAUDE.md" claude/proyecto-CLAUDE.md
+
 # -L resuelve los enlaces simbolicos (en Windows se romperian). --delete-excluded borra del repo lo que pase a estar excluido.
 for d in skills agents commands kb-mercado hook-vault templates; do
   if grep -qxF "$d/" "$PRIV/excluir.txt"; then rm -rf "claude/$d"; continue; fi
