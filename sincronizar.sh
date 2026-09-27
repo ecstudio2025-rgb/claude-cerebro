@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Exporta el Claude del Mac a este repo (PUBLICO) y lo sube a GitHub.
+# Exporta el Claude del Mac a este repo (PUBLICO) y lo sube a GitHub; la memoria va aparte, al VPS con login.
 # Uso: bash ~/claude-cerebro/sincronizar.sh [--sin-push]
 # Nunca copia la memoria, settings.json, ~/.claude.json, sesiones, historial ni MCP (datos privados y claves).
 # Lo que no debe salir en publico se configura FUERA del repo, en ~/.config/claude-cerebro/:
@@ -55,6 +55,11 @@ if ! python3 "$REPO/revisar-secretos.py" claude; then
   echo "Revision de secretos con avisos: no se sube nada. Corrige o anade la excepcion en revisar-secretos.py"; exit 1
 fi
 rm -rf "$REPO/__pycache__"
+
+# Capa privada del equipo (memoria + excluidos, claves tachadas) al VPS con login. El script vive fuera del repo.
+if [[ "${1:-}" != "--sin-push" && -f "$PRIV/empaquetar-privado.py" ]]; then
+  python3 "$PRIV/empaquetar-privado.py" --subir | tail -2 || { echo "Fallo la capa privada: el repo publico sigue adelante"; }
+fi
 
 git add -A
 if git diff --cached --quiet; then echo "Sin cambios."; exit 0; fi
