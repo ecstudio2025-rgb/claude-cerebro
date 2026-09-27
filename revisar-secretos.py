@@ -38,7 +38,7 @@ PERMITIDOS = [
     "_get_api_key(provider)", "get_bing_api_key()", "get_moz_api_key()", "_get_credentials()",
     "STOREFRONT_TOKEN,", "$GOOGLE_API_KEY", "URLPatternComponentResult", "-----BEGIN PRIVATE KEY-----\\n...\\n",
     # 28-sep-2026: ejemplos curl que leen la clave de una variable de entorno
-    "$GEMINI_API_KEY", "$ELEVENLABS_API_KEY",
+    "$GEMINI_API_KEY", "$ELEVENLABS_API_KEY", "= `INGEST_SECRET`",
 ]
 
 EXT_TEXTO = {".md", ".txt", ".json", ".jsonl", ".py", ".js", ".ts", ".mjs", ".cjs", ".sh", ".ps1",

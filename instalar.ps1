@@ -1,4 +1,4 @@
-# Instala el Claude de Diego en Windows: skills, agentes, kb-mercado, hook-vault, CLAUDE.md y plugins.
+# Instala el Claude de Diego en Windows: skills, agentes, kb-mercado, CLAUDE.md, plugins y, con la clave del equipo, su memoria.
 #
 # Instalar o actualizar (PowerShell, sin login):
 #   irm https://raw.githubusercontent.com/ecstudio2025-rgb/claude-cerebro/main/instalar.ps1 | iex
@@ -36,6 +36,31 @@ if ($LASTEXITCODE -ne 0) { throw "git fallo en $Repo" }
 
 New-Item -ItemType Directory -Force -Path $Claude | Out-Null
 
+# --- Capa privada: memoria de Diego y skills con casos de clientes (clave del equipo) ---
+$PrivUrl = 'https://socialimpulso.es/cerebro/privado.tar.gz'
+$Priv    = Join-Path $Claude 'cerebro-privado'
+$Clave   = $env:CEREBRO_CLAVE
+if (-not $Clave) {
+    $seg = Read-Host 'Clave del equipo para la memoria de Diego (Enter para saltar)' -AsSecureString
+    $Clave = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($seg))
+}
+if ($Clave) {
+    $tgz = Join-Path $env:TEMP "cerebro-$Stamp.tgz"
+    $auth = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("equipo:$Clave"))
+    try {
+        Invoke-WebRequest -Uri $PrivUrl -Headers @{ Authorization = "Basic $auth" } -OutFile $tgz -UseBasicParsing
+        if (Test-Path $Priv) { Remove-Item -Recurse -Force $Priv }
+        tar -xzf $tgz -C $Claude
+        $lista = Get-ChildItem -Recurse -File (Join-Path $Priv 'claude') | ForEach-Object { 'claude/' + $_.FullName.Substring((Join-Path $Priv 'claude').Length + 1).Replace('\', '/') }
+        [System.IO.File]::WriteAllLines((Join-Path $Repo '.git\info\exclude'), $lista, $Utf8)
+        Copy-Item -Recurse -Force (Join-Path $Priv 'claude\*') (Join-Path $Repo 'claude')
+        Write-Host "  capa privada instalada en $Priv"
+    } catch {
+        Write-Host '  clave incorrecta o sin conexion: sigo sin la capa privada'
+    }
+    Remove-Item -Force $tgz -ErrorAction SilentlyContinue
+}
+
 function Enlazar([string]$Origen, [string]$Destino) {
     if (-not (Test-Path -LiteralPath $Origen)) { return }
     if (Test-Path -LiteralPath $Destino) {
@@ -67,6 +92,24 @@ foreach ($f in 'CLAUDE.md', 'voz-diego-marca.md', 'anti-patrones-ia-redaccion.md
     if ((Test-Path $destino) -and -not (Test-Path "$destino.bak-original")) { Copy-Item $destino "$destino.bak-original" }
     [System.IO.File]::WriteAllText($destino, $texto, $Utf8)
     Write-Host "  $destino"
+}
+
+if (Test-Path (Join-Path $Priv 'memoria')) {
+    $PrivFwd = $Priv -replace '\\', '/'
+    $bloque = @"
+
+## Memoria de Diego (solo lectura, capa privada del equipo)
+Indices de lo que Diego y Claude han hecho con cada cliente, proyecto y herramienta. Cada linea apunta a un fichero de su misma carpeta:
+- $PrivFwd/memoria/claude/ (trabajo reciente)
+- $PrivFwd/memoria/documents/ (ecosistema: One, Chat, Setter, facturas, clientes)
+Antes de tocar un cliente o un sistema, busca aqui. No edites estos ficheros: se sobrescriben al actualizar. Tu propia memoria va aparte.
+Las contrasenas y tokens estan tachados a proposito: pideselos a Diego, no los busques.
+
+@$PrivFwd/memoria/claude/MEMORY.md
+@$PrivFwd/memoria/documents/MEMORY.md
+"@
+    [System.IO.File]::AppendAllText((Join-Path $Claude 'CLAUDE.md'), $bloque, $Utf8)
+    Write-Host '  memoria de Diego enlazada en CLAUDE.md'
 }
 
 Write-Host 'Ajustes:'
@@ -103,4 +146,4 @@ if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
 Write-Host ''
 Write-Host "Listo. Abre una terminal nueva, entra en $HOME\Claude y lanza: claude"
 Write-Host 'La primera vez te pide iniciar sesion y confirmar los plugins.'
-Write-Host 'No vienen (son privados): la memoria, los MCP con token (Custom Soft Lab, facturas...) ni el acceso SSH al VPS.'
+Write-Host 'No vienen nunca: contrasenas, tokens de los MCP ni acceso SSH al VPS. Eso se pide a Diego.'
