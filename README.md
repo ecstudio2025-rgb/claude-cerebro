@@ -1,55 +1,89 @@
 # El Claude de Diego, para el equipo de ECS
 
-Con esto tienes en tu ordenador el mismo Claude Code que usa Diego en su terminal: sus 400 y pico skills, los agentes, la base de criterio de mercado (`kb-mercado`), las reglas de redacción sin huella de IA, su voz de marca y la memoria de todo lo que ha hecho con cada cliente y cada sistema.
+Con esto tienes en tu ordenador el mismo Claude Code que usa Diego en su terminal. Trae sus más de 400 skills, los agentes, la base de criterio de mercado, las reglas para escribir sin que se note la IA, su voz de marca y la memoria de lo que se ha hecho con cada cliente y cada sistema.
 
-Tarda unos 5 minutos. Se instala con una línea y se actualiza con la misma línea.
+Es lo que Diego enseñó en la reunión del 25 de septiembre. Vale igual para Mac que para Windows y se instala con una sola línea.
 
 ---
 
-## Antes de empezar
+## Lo que necesitas
 
-1. **Una cuenta de Claude con Claude Code.** Plan Pro, Max o un puesto del plan Team. Sin eso no arranca. Si no la tienes, pídela a Diego.
-2. **La clave del equipo.** Te la da Diego por privado. Sin ella se instala todo menos la memoria y las skills con casos de clientes.
-3. **Git.** En Mac, si no lo tienes, el instalador te lo dirá (`xcode-select --install`). En Windows se instala solo.
+- **La cuenta de Claude del equipo.** Es compartida, así que no hace falta que te hagas una. Diego te pasa el acceso.
+- **La clave del equipo.** Sirve para descargar la memoria de Diego. Te la da él por privado. Sin ella se instala todo menos la memoria y las skills que llevan casos de clientes.
+- **Google Chrome.** Claude maneja el navegador a través de una extensión que solo existe para Chrome. Firefox no vale.
+- 10 minutos.
 
-## Instalar
+## 1. Instalar
 
-### Mac o Linux
-
-Abre la app **Terminal** y pega:
+**Mac.** Abre la app **Terminal** (Cmd + espacio, escribe `terminal`, Enter) y pega esto:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ecstudio2025-rgb/claude-cerebro/main/instalar.sh | bash
 ```
 
-### Windows
-
-Abre **PowerShell** (botón de inicio, escribe `powershell`, Enter) y pega:
+**Windows.** Abre **PowerShell** (tecla Windows, escribe `powershell`, Enter) y pega esto:
 
 ```powershell
 irm https://raw.githubusercontent.com/ecstudio2025-rgb/claude-cerebro/main/instalar.ps1 | iex
 ```
 
-En los dos casos te pedirá la **clave del equipo**. Pégala y pulsa Enter (no se ve mientras escribes, es normal). Si la dejas en blanco, instala la parte pública y sigue.
+Cuando te pida la **clave del equipo**, pégala y pulsa Enter. Mientras escribes no se ve nada, es normal.
 
-## Primer arranque
+## 2. Primer arranque
 
-Cierra la terminal, abre una nueva y escribe:
+1. Cierra la terminal y abre una nueva.
+2. Escribe `cd ~/Claude` y Enter. Luego `claude` y Enter.
+3. Se abre el navegador para iniciar sesión. Entra con la **cuenta del equipo**.
+4. Te pregunta por los plugins: di que sí a todo.
+5. **Reinicia el ordenador.** Sin reiniciar no ve las conexiones.
 
-```bash
-cd ~/Claude
-claude
-```
+## 3. Conectar Chrome
 
-La primera vez te pide iniciar sesión en el navegador con tu cuenta de Claude y aceptar los plugins. Di que sí a todo.
+1. Instala la extensión **Claude in Chrome** desde la Chrome Web Store.
+2. Inicia sesión en la extensión con la misma cuenta del equipo.
+3. Dentro de Claude, en la terminal, escribe `/mcp`. Verás todo lo que tiene conectado: Notion, Gmail, Miro, Canva, Calendly, Chrome…
 
-Para comprobar que tiene el cerebro, pregúntale algo que solo sabría Diego, por ejemplo: *«¿qué contrato tiene el último cliente de Sprint 360?»*. Si responde con detalle, está bien instalado.
+Con Chrome conectado, Claude puede hacer cosas en webs que no tienen conexión directa, como montar una automatización en GHL o configurar ManyChat para un cliente. Si algo no puede hacerlo, te lo dice, lo haces tú a mano, le contestas «ya está» y sigue.
 
-## Actualizar
+## 4. Comprobar que tiene el cerebro
 
-Diego va añadiendo skills y memoria cada día. Para traerte lo último, vuelve a lanzar **la misma línea de instalación**. No borra nada tuyo: lo que ya tuvieras con el mismo nombre lo renombra a `.bak-FECHA`.
+Pregúntale algo que solo sabría Diego, por ejemplo: *«¿qué contrato firmó el último cliente de Sprint 360?»*. Si te contesta con detalle, está bien instalado. Si no sabe nada, instalaste sin la clave: vuelve al paso 1.
 
-Recomendado: una vez por semana, o cuando Diego avise en el grupo.
+---
+
+## La terminal en 5 comandos
+
+Si nunca la has usado, con esto te apañas:
+
+| Escribes | Qué hace |
+|---|---|
+| `ls` | Enseña las carpetas y archivos de donde estás |
+| `cd Claude` | Entra en la carpeta Claude |
+| `cd ..` | Vuelve a la carpeta de arriba |
+| `claude` | Arranca Claude en la carpeta donde estás |
+| `/exit` (dentro de Claude) | Sale de Claude y vuelve a la terminal |
+
+Trabaja siempre dentro de `~/Claude`. Si llevas varios clientes, crea una carpeta por cliente y abre una pestaña de terminal para cada uno (Cmd + T en Mac, Ctrl + Shift + T en Windows Terminal). Cada pestaña va a lo suyo y trabajan a la vez.
+
+## Cómo pedirle las cosas
+
+Cuanto más concreto, mejor sale. «Hazme una campaña» da un resultado mediocre. «Campaña de captación en Meta para una clínica dental de Madrid, 20 €/día, objetivo formularios, público mujeres de 35 a 55» da uno bueno. Dile el sector, el presupuesto, el objetivo y de dónde tiene que sacar la información.
+
+Las skills se ven escribiendo `/` dentro de Claude. Algunas que se usan mucho:
+
+- `/copywriting`, `/social-content`: textos, captions y guiones con la voz de Diego.
+- `/carruseles-con-caricatura-diego`, `/carrusel-gemini`: carruseles.
+- `/clips-cortos-de-videos-largos`, `/edicion-de-videos-ia`: cortar vídeos, quitar silencios y subtitular.
+- `/ads-meta`, `/google-ads-360`, `/diagnostico-360`: publicidad.
+- `/consejo`: para decidir si una idea tiene sentido.
+
+**Editores:** para cortar, quitar silencios y subtítulos dinámicos funciona bien. Las animaciones todavía están verdes. Si ves que algo se puede mejorar, díselo a Diego y se mejora la skill entre todos.
+
+## Lo que cuesta dinero
+
+- **Imágenes.** No uses `/banana` salvo para una imagen concreta que haga falta de verdad: cada una cuesta unos 4 € y ya se han ido 700 € sin darnos cuenta. Pídele que busque en bancos de imágenes gratis o que genere con Gemini a través de Chrome. El cerebro ya trae esta regla, pero tenlo en la cabeza.
+- **Modelo.** Opus 5.5 siempre. Si `/model` dice otro, cámbialo.
+- **La cuenta es de todos.** No dejes agentes trabajando en bucle sin motivo. Si se agota, se para para el equipo entero.
 
 ---
 
@@ -57,33 +91,37 @@ Recomendado: una vez por semana, o cuando Diego avise en el grupo.
 
 | Trae | No trae, nunca |
 |---|---|
-| Skills, agentes y comandos de Diego | Contraseñas y tokens (están tachados en la memoria) |
-| `kb-mercado`: reglas de criterio con grado de evidencia | Acceso SSH a los VPS |
-| Redacción sin huella de IA y voz de marca | Los MCP con token (facturas, CRM, WhatsApp, Instagram) |
-| Banco de 10.000 ganchos | Su sesión de Gmail, Notion o Meta |
+| Skills, agentes y comandos de Diego | Contraseñas y tokens (en la memoria están tachados) |
+| Criterio de mercado con grado de evidencia | Acceso SSH a los servidores |
+| Redacción sin huella de IA y voz de marca | Información financiera de la empresa |
+| Banco de 10.000 ganchos | La sesión de Gmail o Meta de Diego |
 | Memoria de clientes y sistemas (con la clave) | |
-| Los mismos plugins y ajustes (Opus, modo auto) | |
+| Configuración Ruflo (swarm) y los mismos plugins | |
 
-Si una tarea necesita algo de la columna derecha, Claude te dirá que falta. **Pídeselo a Diego**, no intentes sacarlo por tu cuenta.
+Si una tarea necesita algo de la columna derecha, Claude te avisará. Pídeselo a Diego. No intentes conseguirlo por otro lado.
 
-## Cómo trabajar con él
+La memoria de Diego es de solo lectura. Lo que Claude aprenda trabajando contigo se guarda en tu propia memoria, aparte.
 
-- **Trabaja siempre desde `~/Claude`.** Crea una carpeta por cliente o proyecto ahí dentro.
-- **La memoria de Diego es de solo lectura.** Claude la consulta, pero lo que aprenda contigo lo guarda en tu propia memoria. Al actualizar, la de Diego se sustituye entera.
-- **Pídele las cosas como se las pedirías a Diego.** «Hazme un guion de reel para X con su voz», «revisa esta propuesta con el criterio de mercado», «¿qué pasó con la campaña de tal cliente en septiembre?».
-- **Las skills se invocan con `/`.** Escribe `/` en Claude y verás la lista. Las más usadas: `/copywriting`, `/social-content`, `/ads-meta`, `/google-ads-360`, `/diagnostico-360`, `/consejo`.
-- **Lo que va a un cliente, revísalo tú antes.** Claude redacta con la voz de Diego, pero la responsabilidad del envío es tuya.
+## Actualizar
+
+Diego añade skills y memoria casi a diario. Para traerte lo último, vuelve a lanzar **la misma línea del paso 1**. Tus cosas no se borran: si algo choca de nombre, lo guarda como `.bak-FECHA`.
+
+Hazlo una vez por semana o cuando Diego avise en el grupo.
 
 ## Si algo falla
 
-| Síntoma | Qué hacer |
+| Qué pasa | Qué hacer |
 |---|---|
-| `claude: command not found` | Cierra la terminal y abre otra. Si sigue, vuelve a lanzar la línea de instalación. |
-| «clave incorrecta o sin conexión» | Revisa la clave con Diego. El resto se instala igual. |
-| No sabe nada de los clientes | Instalaste sin clave. Vuelve a lanzar la línea y pégala. |
+| `claude: command not found` | Cierra la terminal y abre otra. Si sigue, repite el paso 1. |
+| «clave incorrecta o sin conexión» | Confirma la clave con Diego. El resto se instala igual. |
+| No sabe nada de los clientes | Instalaste sin clave. Repite el paso 1 y pégala. |
+| `/mcp` sale vacío o no ve Chrome | Reinicia el ordenador y comprueba que la extensión tiene la sesión iniciada. |
 | Windows: «la ejecución de scripts está deshabilitada» | En PowerShell: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, acepta y repite. |
-| Se queja de un plugin | Dentro de Claude: `/plugin` y dale a instalar el que falte. |
+| «Sin Node.js: Ruflo queda para luego» | Opcional. Instala Node LTS desde nodejs.org y repite el paso 1. Claude funciona igual sin él. |
+| Se queja de un plugin | Dentro de Claude escribe `/plugin` e instala el que falte. |
+
+Para cualquier otra cosa, escribe a Diego. Mejor por texto que por audio.
 
 ## Confidencialidad
 
-La memoria y las skills privadas llevan datos de clientes reales: nombres, cifras, contratos. Son para trabajar en ECS. No se copian a otro sitio, no se comparten fuera del equipo y la clave no se reenvía. Si sales del equipo, Diego cambia la clave y deja de actualizarse.
+La memoria y las skills privadas llevan datos reales de clientes: nombres, contratos, cifras de campañas. Son para trabajar en ECS. No se copian a otro sitio, no salen del equipo y la clave no se reenvía a nadie. Si alguien sale del equipo, Diego cambia la clave.
