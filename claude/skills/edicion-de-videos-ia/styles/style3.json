@@ -1,0 +1,38 @@
+{
+  "id": "style3",
+  "presetId": "motion-3d",
+  "name": "Edicion dinamica unicamara (MOTION 3D)",
+  "descripcion": "Como style2 (bruto sin cortar, corte + recorte a 1 min por contexto) PERO con MOTION GRAPHICS: en los 2-4 momentos más conceptuales, el talking head da paso a una escena a pantalla completa sobre negro con un OBJETO 3D real flotando (cerebro, llave, billetes, lupa, diamante...), cintas dorada y blanca que fluyen, círculo dorado y el subtítulo con glow + subrayado. El director IA elige el objeto por concepto (mente→cerebro, dinero→billetes, buscar→lupa, solución→llave).",
+  "template": "diego",
+  "params": { "maxPause": 0.45, "padBefore": 0.1, "padAfter": 0.18, "minSegment": 0.25 },
+  "zoomMode": "normal",
+  "maxDurationSec": 60,
+  "customStyle": null,
+  "features": {
+    "captions": true, "zoom": true, "zoomEnergy": true, "hook": true, "cta": true,
+    "burns": true, "sfx": true, "music": true, "broll": false, "stickers": true, "motion": true
+  },
+  "diferencia_con_style2": "style2 usa b-roll de stock detrás de la persona (rotoscopia). style3 sustituye ese b-roll por ESCENAS DE MOTION GRAPHICS 3D a pantalla completa (broll:false, motion:true). Todo lo demás (corte, recorte a 1 min, subs, zoom, SFX, música, stickers) es igual.",
+  "entorno_3d": {
+    "regla": "TODAS las escenas viven en un entorno 3D real (Stage3D.tsx), no solo las de objeto: campo de partículas, anillos de alambre, rejilla en fuga y cámara que viaja. Minimalista pero con profundidad. El texto entra con perspectiva (translateZ/rotateX), no plano.",
+    "encadenado": "MotionChain.tsx: escenas contiguas (hueco <0.8s en el vídeo final) comparten UN ÚNICO ThreeCanvas y una sola cámara que viaja por toda la cadena → se suceden sin cortar el plano 3D. El objeto 3D entra/sale dentro del mismo entorno. Main.tsx agrupa motionWins en cadenas.",
+    "duracion": "Escenas LARGAS: mín 4.5s (frase + aire para que el 3D respire)."
+  },
+  "tipos_de_motion": {
+    "regla": "El TIPO lo elige el director IA según lo que se DICE. Nunca el mismo recurso siempre, nunca dos iguales seguidos. Mínimo 4-5 escenas si el vídeo pasa de 30-45s. PRIORIZAR object3d (al menos la mitad si el guion lo permite).",
+    "bigtext": "Tipografía cinética: la frase golpea palabra a palabra, la última en dorado. Para frases contundentes y giros.",
+    "quote": "La frase como cita/testimonio con comillas gigantes y barra dorada. Para confesiones e intimidad.",
+    "counter": "Una cifra que sube dentro de un anillo dorado. SOLO si se dice un número/tiempo/cantidad.",
+    "list": "2-4 items entrando uno a uno. SOLO si el guion enumera.",
+    "object3d": "Objeto 3D flotando en círculo dorado. SOLO si un objeto físico refuerza la idea, y con MEDIDA (1-2 por vídeo máx)."
+  },
+  "riser": "plan.hookRiser lo decide el director: true SOLO si el hook crea expectativa (promete/anticipa/tensa). Una confesión tranquila NO lleva riser.",
+  "musica": "Se elige por temática y NO se repite entre vídeos: el server reúne las pistas usadas en proyectos previos y se pasan como avoidMusic al director.",
+  "motion_graphics": {
+    "3d": "Objeto glb del pack (assets/obj3d, importado por webpack como asset del bundle) renderizado en vivo con @remotion/three; normalizado + DoubleSide (glb con normales invertidas) + flotar/girar. REQUIERE gl:'angle' en el render (selectComposition + renderMedia chromiumOptions); en headless sin eso el WebGL no crea contexto.",
+    "escena": "remotion/MotionScene.tsx: negro + halo cálido + 2 cintas bezier animadas (dorada y blanca) + círculo dorado + objeto 3D + caption (línea pequeña blanca / línea grande dorada con glow y subrayado).",
+    "objetos": "remotion/objects.ts mapea slug→url; OBJECT_DESCRIPTIONS/MOTION_OBJECTS (director.mjs) da el concepto de cada uno para que gpt-5.5 elija.",
+    "gotchas": "En Remotion, cargar un glb async con delayRender+setState NO se ve en un STILL (r3f no repinta un solo frame tras cargar) — pero SÍ en render de VÍDEO (los frames avanzan). Verificar siempre style3 con render de vídeo, no still. El director elige escenas del contenido QUE SOBREVIVE al recorte (keptSegments), si no caen en zona cortada."
+  },
+  "ejemplo": "PROTOCOLO.MOV (testimonio abstinencia) 2:44 → ~57s con 2 escenas de cerebro (mente/pensamientos) sobre negro."
+}

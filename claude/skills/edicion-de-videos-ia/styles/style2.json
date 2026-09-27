@@ -1,0 +1,26 @@
+{
+  "id": "style2",
+  "presetId": "crudo-sin-cortar",
+  "name": "Edicion dinamica unicamara (CRUDO SIN CORTAR)",
+  "descripcion": "Como style1 pero para material CRUDO SIN CORTAR (una toma larga y continua, sin editar). El motor hace TODO el trabajo pesado: corta silencios y limpia repeticiones/tartamudeos, y como el bruto suele pasar de 1 minuto, gpt-5.5 lee el contexto y RECORTA a ≤60s eligiendo qué frases son prescindibles, conservando el arco. Mismo estilo visual y de audio que style1.",
+  "template": "diego",
+  "params": { "maxPause": 0.45, "padBefore": 0.1, "padAfter": 0.18, "minSegment": 0.25 },
+  "zoomMode": "normal",
+  "maxDurationSec": 60,
+  "customStyle": null,
+  "features": {
+    "captions": true,
+    "zoom": true,
+    "zoomEnergy": true,
+    "hook": true,
+    "cta": true,
+    "burns": true,
+    "sfx": true,
+    "music": true,
+    "broll": true,
+    "stickers": true
+  },
+  "diferencia_con_style1": "Mismo motor y estilo. style1 (CORTADO) asume que el bruto ya viene editado/corto; style2 (SIN CORTAR) asume una toma cruda larga: el corte de silencios+repeticiones y el recorte a 1 min por contexto son los que dejan el vídeo listo. Ambos fuerzan máximo 60s (regla: los vídeos siempre ≤1 min).",
+  "ejemplo": "PROTOCOLO.MOV — testimonio de abstinencia, 2:44 sin cortar → 58.8s: quitó 19 frases prescindibles conservando gancho doloroso → giro práctico → cierre esperanzador; zoom controlado con origen en la cara.",
+  "pipeline": "Igual que style1 (ver style1.json) + paso 2b: trimToLength (director.mjs, gpt-5.5) recorta a maxDurationSec por contexto usando los segmentos de whisper como unidades."
+}

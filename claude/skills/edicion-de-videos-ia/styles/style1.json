@@ -1,0 +1,41 @@
+{
+  "id": "style1",
+  "presetId": "cruda-cortada",
+  "name": "Edicion dinamica unicamara (CRUDO CORTADO)",
+  "descripcion": "Edición dinámica de vídeo de una sola cámara (talking head) a partir de material CRUDO sin cortar. Corta silencios y repeticiones por palabra, y monta el estilo viral completo: subtítulos a dos tamaños, zoom por energía del discurso, quemados con SFX, música por temática, b-roll semántico y stickers con rotoscopia.",
+  "template": "diego",
+  "params": { "maxPause": 0.45, "padBefore": 0.1, "padAfter": 0.18, "minSegment": 0.25 },
+  "zoomMode": "normal",
+  "maxDurationSec": 60,
+  "customStyle": null,
+  "features": {
+    "captions": true,
+    "zoom": true,
+    "zoomEnergy": true,
+    "hook": true,
+    "cta": true,
+    "burns": true,
+    "sfx": true,
+    "music": true,
+    "broll": true,
+    "stickers": true
+  },
+  "pipeline": {
+    "1_transcripcion": "faster-whisper con word timestamps (tools/transcribe.py, modelo WHISPER_MODEL=medium).",
+    "2_corte": "engine/plan.mjs: corta pausas > maxPause con aire asimétrico (padBefore/padAfter), y limpia sobre el STREAM DE PALABRAS re-segmentado por pausas: tartamudeos (palabra repetida seguida), retakes (frase repetida → se queda la ÚLTIMA toma) y falsos arranques. Sin solapes; los cortes manuales son frontera dura.",
+    "2b_recorte_a_1min": "Si tras el corte el vídeo sigue durando > maxDurationSec (60s), trimToLength (gpt-5.5) lee la transcripción, entiende el hilo y elige qué FRASES (segmentos de whisper) son prescindibles para bajar al tope, conservando el gancho inicial, el cierre/CTA y el arco narrativo. El zoomMode lo fija el ESTILO (normal, controlado), no el director, y el origen del zoom va SIEMPRE hacia la cara detectada (mediapipe) para encuadrar el rostro sin recortar.",
+    "3_director_IA": "engine/director.mjs (gpt-5.5): elige qué citas van en amarillo (emphasisRanges), 2º acento azul (emphasis_secondary), acotaciones en itálica (asides), hook, keyword CTA, flashes de sección (flashAt), energía del discurso por rangos (zoom_alta/zoom_baja).",
+    "4_recursos_IA": "resourceDirector (gpt-5.5): entiende la temática del guion y elige música de fondo por tono, b-roll que ilustra literalmente frases concretas (fullscreen, persona por delante con rotoscopia) y 5-8 stickers-emoji con sentido. Guardas duras: nada en hook (<3s) ni CTA (últimos 4s), sin gore, sin solapes.",
+    "5_rotoscopia": "tools/matte.py: mediapipe saca la máscara (gris) y ffmpeg alphamerge fusiona el alfa sobre el COLOR ORIGINAL sin alterarlo (consciente del espacio de color: BT.2020→bt709 SDR con eq de saturación si el source es 4K de móvil; bt709 intacto si ya es SDR). Cutout VP8 con alfa; la persona queda POR DELANTE del b-roll.",
+    "6_render": "Remotion (@remotion/renderer) + masterización loudnorm −14 LUFS. SFX del pack a −10 dB, música de fondo 9% con fades."
+  },
+  "estilo_visual": {
+    "subtitulos": "mecánica stack: máximo 2 líneas SIEMPRE (la de abajo, la reciente, a 1.7× la de arriba; cada línea en una fila, se encoge si no cabe). Inter ExtraBold, tracking -0.02em, colocados bajo la barbilla (mediapipe). Entrada con fade + deslizamiento (abajo/izda/dcha) y curva de velocidad; salida seca (sin subtítulos fantasma).",
+    "amarillo": "#FFE12E énfasis · #5AC8FA 2º acento · itálica pequeña para acotaciones. Lo elige el director IA por cita literal.",
+    "zoom": "punch-in por cláusula (subdivide planos sin quitar tiempo) + zoom in/out continuo con easeInOutCubic; la amplitud sube en los picos de energía que marca la IA (whoosh en esos picos).",
+    "transiciones": "film burn real (assets/burns) con envolvente + obturador de cámara + click en los cambios de sección; flash blanco en huecos fuertes.",
+    "stickers": "emoji pegados al bloque de subtítulos (casi tocando, debajo por defecto), 1.7s en pantalla, entrada con rebote y salida cayendo. Detrás de los subs, delante del fondo.",
+    "cta": "keyword final en degradado dorado gigante los últimos 3.5s.",
+    "audio": "riser al hook (muere en el primer corte), whoosh en zooms fuertes, click/obturador en transiciones; todo a −10 dB bajo la voz. Música de fondo por temática."
+  }
+}

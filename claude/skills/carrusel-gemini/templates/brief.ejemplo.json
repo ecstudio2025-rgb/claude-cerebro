@@ -1,0 +1,18 @@
+{
+  "tema": "Por qué el Instagram de un negocio publica todos los días y no le entra ni un cliente",
+  "seguidor_ideal": "Dueño de un negocio o profesional que se graba él mismo, publica constante y no ve retorno. No sabe de algoritmo ni de embudos.",
+  "deseo": "dinero",
+  "objetivo": "Get Views",
+  "lead_magnet": {
+    "nombre": "La plantilla de los 5 filtros",
+    "promesa": "Un folio: pasas tu idea por cinco filtros y sabes si se graba o se tira, antes de encender la cámara"
+  },
+  "keyword": "GUION",
+  "oferta": {
+    "nombre": "Sprint 360",
+    "que_incluye": "Un mes de contenido producido: idea, guion, grabación y edición. El cliente pone la cara media hora a la semana.",
+    "cta": "Escríbeme SPRINT"
+  },
+  "marca": { "nombre": "Diego Álvarez", "handle": "@thediegoalvarez", "rojo": "#b03035", "negro": "#111111", "fondo": "#ffffff" },
+  "slides": 8
+}

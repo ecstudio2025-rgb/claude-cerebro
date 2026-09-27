@@ -1,0 +1,69 @@
+{
+  "slides": [
+    {
+      "layout": "portada",
+      "hook": [
+        "El formato de vídeo",
+        "que te trae reservas",
+        "sin publicar a diario"
+      ],
+      "acento": "a diario",
+      "art": "Cámara de vídeo profesional apagada sobre una mesa de madera oscura bajo un flexo cálido. Un cable rojo vivo cruza la superficie."
+    },
+    {
+      "layout": "contexto",
+      "label": "El problema",
+      "titulo": "Grabar por grabar quema",
+      "cuerpo": "Te pasas el domingo editando cortes. Hablas a cámara, pones subtítulos dinámicos y subes un reel cada tarde. Pasan tres semanas. Tu agenda sigue exactamente igual de vacía que el mes pasado. Hay likes. Nadie saca la tarjeta."
+    },
+    {
+      "layout": "contenido",
+      "numero": "01",
+      "titulo": "El mito del volumen",
+      "cuerpo": "Un arquitecto subió cincuenta vídeos explicando comandos de AutoCAD. Cero presupuestos. Su competencia subió tres reels enseñando el antes y el después de una reforma ruinosa. Llenó el trimestre. La cantidad da igual si el mensaje aburre al que paga.",
+      "art": "Plano cenital de un plano topográfico sobre cemento pulido. Un escalímetro rojo de aluminio descansa sobre el papel."
+    },
+    {
+      "layout": "contenido",
+      "numero": "02",
+      "titulo": "La barrera del instinto",
+      "cuerpo": "Nadie entra a Instagram pidiendo una clase teórica. Buscan entretenerse o curar una molestia inmediata. Si tus primeros tres segundos suenan a presentación de PowerPoint corporativa, el pulgar desliza sin piedad. Tienes que atacar al instinto antes que a la razón."
+    },
+    {
+      "layout": "contenido",
+      "numero": "03",
+      "titulo": "El control de aduanas",
+      "cuerpo": "Grabar una idea aburrida a máxima resolución sigue dando un vídeo inútil. Un fisioterapeuta probó a tirar cualquier guion que su madre no entendiera. Dejó de hablar de fascias y mostró por qué duele el cuello al conducir. Dobló sus citas."
+    },
+    {
+      "layout": "entrega",
+      "label": "Lo que te llevas",
+      "titulo": "La plantilla de los 5 filtros",
+      "cuerpo": "Un único folio. Pasas tu idea por cinco cortes rápidos. Si sobrevive, la grabas. Si falla, a la papelera. Sabes si el vídeo va a funcionar antes siquiera de colocar el trípode. Ahorras horas de edición que nadie te paga.",
+      "art": "Folio impreso doblado por la mitad sobre una mesa de cristal negro. Una taza de café mancha el borde y un bolígrafo rojo marca una equis."
+    },
+    {
+      "layout": "cta",
+      "keyword": "GUION",
+      "pre": "Comenta",
+      "post": "y te la mando por privado"
+    },
+    {
+      "layout": "venta",
+      "label": "Para los que delegan",
+      "titulo": "Sprint 360",
+      "cuerpo": "Quizá tienes dinero pero cero ganas de pensar en redes. Yo me encargo. Busco la idea, escribo el texto, te grabo en persona y edito todo. Tú solo pones la cara media hora a la semana. Un mes resuelto.",
+      "boton": "Escríbeme SPRINT",
+      "art": "Claquet de cine apoyada contra la pata de un foco de estudio apagado. La cinta adhesiva que marca la escena es de color rojo brillante."
+    }
+  ],
+  "marca": {
+    "nombre": "Diego Álvarez",
+    "handle": "@thediegoalvarez",
+    "rojo": "#b03035",
+    "negro": "#111111",
+    "fondo": "#ffffff"
+  },
+  "keyword": "GUION",
+  "_hook_vault": "01-0203"
+}

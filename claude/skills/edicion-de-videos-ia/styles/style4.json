@@ -1,0 +1,26 @@
+{
+  "id": "style4",
+  "presetId": "motion-4-edicion-dinamica",
+  "name": "motion 4 edicion dinamica",
+  "descripcion": "El style3 (motion graphics 3D sobre negro en los momentos conceptuales) pero con ZOOM AGRESIVO. Subtítulos, cortes, SFX, música y recorte a 1 min exactamente iguales que style1/2/3 — la plantilla es `diego`, la que Diego aprobó. Es el estilo que validó el 19-jul con el vídeo de la psicóloga.",
+  "template": "diego",
+  "params": { "maxPause": 0.45, "padBefore": 0.1, "padAfter": 0.18, "minSegment": 0.25, "repSimilarity": 0.75, "repWindowSec": 14, "falseStartMaxWords": 4 },
+  "zoomMode": "agresivo",
+  "maxDurationSec": 60,
+  "customStyle": null,
+  "features": {
+    "captions": true, "zoom": true, "zoomEnergy": true, "hook": true, "cta": true,
+    "burns": true, "sfx": true, "music": true, "broll": false, "stickers": true, "motion": true
+  },
+  "diferencia_con_style3": "SOLO el zoom. style3 va en zoomMode 'normal'; style4 en 'agresivo', y además se subió lo que 'agresivo' significa (ver zoom_agresivo). Todo lo demás es idéntico.",
+  "zoom_agresivo": {
+    "que_se_cambio": "Con el modo 'agresivo' de antes apenas se notaba, así que se subió en dos sitios a la vez (19-jul, a petición de Diego).",
+    "encuadre_base": "templates.ts plantilla diego: zoom.agresivo 0.3 → 0.42. El paso de encuadre por plano (step 0/0.5/0.75/1) llega ahora hasta 1.42× en vez de 1.3×.",
+    "empuje_dentro_del_plano": "Main.tsx: intra = 0.05 + mult*0.12 → 0.05 + mult*0.26. Con agresivo pasa de 0.086 a 0.154, casi el doble. ESTE es el que se nota en movimiento; el encuadre base solo cambia el punto de partida.",
+    "picos_de_energia": "Main.tsx: el tope del zoom en planos de energía 2 sube de 0.28 a 0.34, y la calma de 0.025 a 0.03.",
+    "efecto_lateral": "El cambio de la fórmula `intra` afecta a TODOS los modos: en 'normal' (style1/2/3) el empuje sube de 0.074 a 0.102. Es un pelín más de movimiento en los otros estilos; si molesta, hay que separar la fórmula por modo."
+  },
+  "motion": "Igual que style3: 4-5 escenas si el vídeo pasa de 30-45s (regla de Diego), tipos variados (bigtext/quote/counter/list/object3d) elegidos por el director según el contexto, sobre el entorno 3D continuo (partículas, anillos, rejilla, cámara viajando) y encadenables. broll:false — las escenas de motion sustituyen al b-roll.",
+  "ojo": "Con 4-5 escenas a pantalla completa en un vídeo de ~57s apenas queda hueco para stickers (salieron 1-2). Si Diego quiere sus 5-8 stickers, hay que bajar el número de motions o acortarlos.",
+  "ejemplo": "copy_9679A3D8 (psicóloga, malestar masculino) 68.3s HLG de iPhone → tonemap a bt709 → 57.2s, 5 motions. Render aprobado: calco-4.mp4 del proyecto nuevo-mrqr95cr."
+}

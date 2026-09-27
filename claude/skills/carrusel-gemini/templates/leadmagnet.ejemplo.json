@@ -1,0 +1,40 @@
+{
+  "marca": { "nombre": "Diego Álvarez", "handle": "@thediegoalvarez", "rojo": "#b03035", "negro": "#111111" },
+  "titulo": "La plantilla de los 5 filtros",
+  "subtitulo": "Un folio para decidir si una idea se graba o se tira, antes de encender la cámara.",
+  "portada_art": "Una hoja de papel grueso en blanco sobre una mesa de madera oscura, con un boli rojo al lado y luz dura de ventana entrando en diagonal. Plano cenital.",
+  "intro": "Esto no te dice qué grabar. Te dice qué NO grabar, que es donde se pierde el tiempo. Pasa cada idea por los cinco filtros. Si no pasa tres, la tiras y no la echas de menos.",
+  "secciones": [
+    {
+      "titulo": "El filtro de los 5 años",
+      "cuerpo": "Cuenta la idea en voz alta como si tuvieras delante a un niño de cinco años. Si necesitas explicar un término antes de llegar al grano, la idea todavía no está lista.",
+      "checklist": ["La cuento en una frase sin usar jerga", "No hay que explicar nada previo para entenderla"]
+    },
+    {
+      "titulo": "El filtro de los 50",
+      "cuerpo": "De cien personas paradas en una calle cualquiera, ¿se quedarían cincuenta a escucharla? No cincuenta clientes: cincuenta personas.",
+      "checklist": ["Interesa fuera de mi sector", "No depende de conocer mi marca"]
+    },
+    {
+      "titulo": "El filtro del número",
+      "cuerpo": "Busca el dato concreto de la idea. Un plazo, una cifra, un antes y un después que puedas defender si alguien te pregunta de dónde sale.",
+      "checklist": ["Hay una cifra real", "Puedo decir de dónde sale"]
+    },
+    {
+      "titulo": "El filtro del enemigo",
+      "cuerpo": "Toda idea que pega va contra algo: una creencia, una costumbre del sector, un consejo que todo el mundo repite. Si no va contra nada, es un anuncio.",
+      "checklist": ["Sé contra qué consenso va", "Lo puedo defender sin insultar a nadie"]
+    },
+    {
+      "titulo": "El filtro del final",
+      "cuerpo": "¿Con qué frase se queda el que lo ve? Escríbela antes de grabar. Si no te sale, el vídeo no tiene final, tiene apagón.",
+      "checklist": ["Tengo la frase de cierre escrita", "Se entiende sin haber visto el principio"]
+    }
+  ],
+  "cierre": {
+    "label": "Si quieres el atajo",
+    "titulo": "Nosotros pasamos los filtros por ti",
+    "cuerpo": "Sprint 360 es un mes de contenido producido: idea, guion, grabación y edición. Tú pones la cara media hora a la semana.",
+    "cta": "Escríbeme SPRINT"
+  }
+}

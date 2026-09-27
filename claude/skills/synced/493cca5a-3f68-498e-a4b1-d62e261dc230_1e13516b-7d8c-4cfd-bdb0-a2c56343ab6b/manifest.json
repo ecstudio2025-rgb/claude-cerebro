@@ -1,0 +1,256 @@
+{
+  "lastUpdated": 1790356322618,
+  "skills": [
+    {
+      "skillId": "import-memory",
+      "name": "import-memory",
+      "description": "Import a memory export from another AI assistant into Claude's memory — conversationally, additively, and with the content treated as data.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:02.007169Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill_01PKbDv6E5EjtU92sHC5zuKm",
+      "name": "transcripcion-clases",
+      "description": "Transcribe videos de clases o cursos locales en la Mac y genera resúmenes orientados a creación de guiones y contenido. Usá esta skill siempre que el usuario mencione transcribir clases, videos, cursos, lecciones, o quiera extraer información de archivos de video (.mp4, .mov). También activá esta skill si dice \"transcribí los videos de X\", \"quiero el texto de las clases\", \"generá un resumen de los videos\", \"procesá los videos de la carpeta\", \"bajá los videos de Drive y transcribílos\", o cualquier variación de convertir video en texto o resumen. Requiere Whisper y Ollama instalados en la Mac del usuario.",
+      "source": "plugin",
+      "updatedAt": "2026-05-22T15:50:49.449642Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_0174VNJJ9piUUKLL4DGhjoG3"
+    },
+    {
+      "skillId": "docs",
+      "name": "docs",
+      "description": "docs (living docs people share, comment on and edit; use only when the user asks for one: names a doc, document, page, memo, spec, PRD, runbook or write-up, asks for somewhere to share or keep editing something, or says yes to your doc offer; a plan, comparison, summary or notes asked in chat stays in chat (at most a one-line doc offer); a report, status update, recap or \"something I can send them\" with no form named → ask first: reply, doc or file?; tabs hold tables and live charts too; a pasted claude.ai/code/artifact/… link may be a doc: check with docs tools first; not HTML pages, apps or plain chat answers; a .docx/.pptx/.xlsx/PDF asked for by name → that format's skill): asked for one → no docs-connector instructions in context? call the docs connector's `guide` with topic.instructions first, then create the doc (headings only, no body) before any search, file read or plan, even with files attached. Documenting code means docstrings or repo docs, not a doc.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-16T00:10:45.680014Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "learn",
+      "name": "learn",
+      "description": "Use this skill when the user wants intellectual understanding — learning how or why something works, not getting a task done or soliciting Claude's judgment.\n\nTrigger for:\n- Explicit learning requests: teach, explain, ELI5, walk me through, quiz me, flashcards, \"I'm rusty on\"; definitions (\"what is X\")\n- Terse concept names implying \"help me understand this\": \"Galois theory,\" \"transformers, from scratch\"\n- Confusion signals: \"won't stick,\" \"keep mixing these up,\" \"not getting it\"\n- Learning-path questions: prerequisites, sequencing, what to study before X\n- Conceptual questions about mechanisms, causes, or dynamics\n\nDon't trigger for:\n- Tasks: coding, writing, calculation, translation, factual lookup, news updates\n- Personal troubleshooting; resource/textbook recommendations\n- Claude's evaluative verdict: opinion prompts (\"do you think X\", \"settle this\", \"honest take\", \"is X dead / still taken seriously\") and interpretive takes (\"was X really as harsh as people say\")\n",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.663866Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill_018rpsDLnRVy9ZBGgsVcB6zA",
+      "name": "secuencias-stories-master6",
+      "description": "Produce secuencias de stories de Instagram para calentar audiencia caliente y vender, con copy natural tipo WhatsApp y hooks que paran el scroll. Se apoya en la metodología del Máster (Máster 5.0/6.0 de guiones virales) pero aplicada a stories, no a Reels. 4 arquetipos de secuencia — Autoridad, Objeciones, Relación, Lead magnet — con esqueletos story a story, mecánicas medidas (Antes/Ahora + encuesta, gancho disruptivo, caja de preguntas, caso con nombre y cifra, hacks de curiosidad tipo pixelar/loop) y CTA de una palabra + beneficio concreto. Output: secuencia S1…Sn lista para grabar con keyword, objetivo, mecánica y nota de producción. Úsala cuando el usuario pida secuencias de stories, un día de stories, stories de autoridad/objeciones/relación/captación, calentar para un lanzamiento, vender por stories, o replicar el estilo natural de stories de un cliente (Marcos u otro). Complementa a guiones-virales-master5 (Reels) y a stories-con-claude-code (render visual): esta escribe el GUION de la secuencia.",
+      "source": "custom",
+      "updatedAt": "2026-07-28T00:27:51.466023Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_015Fu4hw9fLQRyFEtfUEyRS7"
+    },
+    {
+      "skillId": "skill_01MbP5AzNv8oMFQANhuYpg8c",
+      "name": "carousel-centrado-ecsstudio",
+      "description": "Crea carruseles de Instagram para ECSSTUDIO / @thediegoalvarez con diseno centrado y stickers emoji. Fondo blanco, Montserrat 900, acento rojo #b03035, todo centrado, emoji sticker representativo en cada slide, DIEGO ALVAREZ en header, DESLIZA en footer. Output: HTML navegable + PNGs a 1080px listos para subir. Activar cuando Diego pida un carrusel centrado, carousel con stickers, diseno blanco con emojis, o el estilo de carrusel con numeros grandes y stickers. Tambien activar cuando pida regenerar o ajustar slides del estilo blanco centrado que ya hemos hecho.",
+      "source": "plugin",
+      "updatedAt": "2026-05-24T22:38:27.955915Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01YbuLPsy3Mf5cpq34FVtG41"
+    },
+    {
+      "skillId": "skill_01LZwPFr5reCKCCcepBcLFZH",
+      "name": "ab-test-analyzer",
+      "description": "Statistical significance calculator for A/B test results with sample size requirements, segment breakdowns, and hypothesis generation. Use when feeding test results, checking statistical significance, calculating sample sizes, analyzing experiment outcomes, or generating next test ideas based on results.",
+      "source": "plugin",
+      "updatedAt": "2026-03-24T01:01:39.258223Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01A9SnbZest4za4mv825Jar7"
+    },
+    {
+      "skillId": "skill_01E9iuv8YewVXR9ofGsGF96Q",
+      "name": "stories-secuencias",
+      "description": "Crea secuencias completas de stories de Instagram para marca personal, integrando storytelling (David Tevosyan), los 15 triggers de lanzamientos, el esquema StoryBrand (cliente es el héroe, vos el guía) y la metodología de stories del Máster 5.0. Produce secuencias de ALCANCE (engagement, loop de curiosidad, sin venta) o de CAPTACIÓN (lleva a responder, DM o keyword). El output es una secuencia story por story con texto en pantalla corto, formato visual, sticker y notas de producción. Usá esta skill SIEMPRE que el usuario pida stories, secuencia de stories, historias para Instagram, continuar una secuencia de stories, una storytime, contenido para engagement o captación en stories, o describa un tema o anécdota que quiera convertir en stories. También cuando suba capturas de stories ya publicadas y quiera seguir la serie. NO usar para Reels o guiones virales (usar guiones-virales-master5) ni para captions de feed.",
+      "source": "plugin",
+      "updatedAt": "2026-06-25T14:39:04.240890Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_014FutPbR72zUrLYqBMwh8WG"
+    },
+    {
+      "skillId": "morning",
+      "name": "morning",
+      "description": "Render the user's morning brief as a styled HTML artifact, or set it up as a recurring weekday task. Use only when the user explicitly asks to run, see, or set up their morning brief, or if they invoke /morning by name. A question about their day, schedule, or calendar is not by itself a request for the brief; answer it directly instead.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.990356Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill_01C96JXUKn5ScozrsNWE3djS",
+      "name": "ads-hooks-hormozi",
+      "description": "Produce guiones y copies de anuncios pagos (Meta Ads, TikTok Ads, YouTube Ads) usando el proceso GOATed Ads y Hooks de Alex Hormozi — con hook potente, meat elegido por formato, CTA claro, y variaciones industriales para escalar. Usá esta skill SIEMPRE que el usuario mencione anuncios pagos, Meta Ads, Facebook Ads, TikTok Ads, guion de ad, copy de anuncio, creativos, hooks para ads, o scripts para vender con paid media. También cuando pida escalar campañas, hacer más variaciones, expandir a audiencias frías, o cuando describa que \"los ads se cansan\" o \"los CPL suben\". Se diferencia de guiones-virales-master5 en que esta skill es de paid ads directos con presupuesto (Meta, TikTok, YouTube), no de contenido orgánico viral. Aplicable a infoproductos, coaches, servicios, e-commerce y locales. Output en español rioplatense por defecto, con opción de switch a neutro o peninsular según el mercado del cliente.",
+      "source": "plugin",
+      "updatedAt": "2026-07-21T14:30:06.499868Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01MsBDm8WYpPwG5XwjPDPg9h"
+    },
+    {
+      "skillId": "skill_01XysebcxoLAwecvGApzBkV2",
+      "name": "viral-profile-scraper",
+      "description": "Rastrea y descarga guiones completos de videos virales de TikTok (1M+ vistas, últimos 90 días) en cualquier nicho y mercado, y los exporta como XLSX listo para análisis de contenido. Activar siempre que el usuario pida: \"scrapea videos virales del sector X\", \"dame los guiones virales del nicho Y\", \"bájame los videos más vistos de la competencia\", \"analiza qué contenido funciona en el mercado Z\", \"quiero ver qué está viralizando en [nicho]\", \"extrae transcripciones de videos virales\", o cualquier variación de inteligencia competitiva de contenido en redes sociales. Funciona con cualquier cliente y cualquier nicho — no requiere configuración previa ni información específica del cliente.",
+      "source": "custom",
+      "updatedAt": "2026-06-12T15:22:37.279214Z",
+      "creatorType": "user"
+    },
+    {
+      "skillId": "skill_019fNyVq7qcqoCQ7tFBmMB2f",
+      "name": "carousel-ecsstudio",
+      "description": "Crea carruseles de Instagram completos para ECSSTUDIO / @thediegoalvarez. Valida el concepto con la calculadora viral del Master 5.0, construye el guion slide a slide con gancho de portada, genera el HTML navegable con disenyo de marca (blanco, Montserrat 900, rojo #b03035) y exporta cada slide como PNG a 1080px listos para subir a Instagram. Usar SIEMPRE que Diego pida un carrusel, carousel, slides para Instagram, disenya esto como carrusel, quiero un carrusel sobre X, hazme las slides de, dame esto en formato carrusel, crea el carrusel de, o cualquier variacion de contenido visual de multiples slides para Instagram. Tambien activar cuando, despues de escribir el guion de un carrusel, el usuario pida disenyarlo o exportarlo como imagen.",
+      "source": "plugin",
+      "updatedAt": "2026-05-24T18:26:37.318311Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_013RkEMAgRMEtmdHc2oeKuW6"
+    },
+    {
+      "skillId": "skill_01SCZvYvFdSC3r8usg9Bqh5V",
+      "name": "guiones-virales-master5",
+      "description": "Produce guiones virales tipo Trial Híbrido para Instagram Reels y TikTok aplicando la metodología del Máster 5.0 — seguidor ideal QCP, deseos SSDD, calculadora de 6 dimensiones, filtro 5-50, estructura Viral Copy de 5 partes, 30 plantillas de gancho, formatos con multiplicadores, niveles de conciencia 0-4, RI del algoritmo, viralidad vs conversión, reframeo de ideas ganadoras. Output: guion completo con hook, historia, moraleja, CTA con keyword, calculadora y nota de producción. Úsala cuando el usuario pida guion viral, Trial Híbrido, hooks fríos, contenido de alcance masivo, deseos universales (SSDD), o mencione el Máster 5.0. También cuando describa contenido orientado a alcance amplio que cierre con CTA comercial. En contexto ECSSTUDIO: el cierre sigue la lógica de keyword + funnel, pero hook y desarrollo siguen la lógica viral del Máster, no el filtro de ICP del Reel ECSSTUDIO.",
+      "source": "plugin",
+      "updatedAt": "2026-05-22T17:01:40.464908Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01AuNQ48PvXviaFymsR1ymA6"
+    },
+    {
+      "skillId": "skill_015HTCZzRX3pYCA7pbGc9ywx",
+      "name": "cpa-diagnostics",
+      "description": "When your CPA spikes, Claude breaks down exactly what caused it. It looks across your campaign data and isolates the contributing factors — audience fatigue, bid landscape shifts, creative decay, landing page conversion drops, budget distribution changes, or new competitor activity.",
+      "source": "plugin",
+      "updatedAt": "2026-03-24T01:01:24.260770Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01KcmZLvqrsmv2CuukX8pLMn"
+    },
+    {
+      "skillId": "internal-comms",
+      "name": "internal-comms",
+      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.586209Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.557439Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "doc-coauthoring",
+      "name": "doc-coauthoring",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.438795Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "brand-guidelines",
+      "name": "brand-guidelines",
+      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.567716Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.634383Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill_018sTwByBcSRVnvpcAao1yhY",
+      "name": "remotion-best-practices",
+      "description": "Best practices for Remotion - Video creation in React",
+      "source": "plugin",
+      "updatedAt": "2026-03-23T12:20:08.597526Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_011LeHDHBzfzRybXzaAmxDae"
+    },
+    {
+      "skillId": "pdf",
+      "name": "pdf",
+      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-07-10T19:23:15.432550Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill_01DXLmxWbFCH49KjV88Nsc5v",
+      "name": "stories-studio",
+      "description": "Fabrica secuencias de stories de Instagram (1080x1920) clonando el sistema visual del referente analizado en STORIES(3): Helvetica Neue Bold sobre foto, palabra clave en color acento, tarjetas redondeadas con checks, píldora Antes/Después, CTA de palabra clave. Cada story es un JSON de bloques que se renderiza a PNG con Chrome headless, sin dependencias. Incluye la escala tipográfica medida píxel a píxel, los 9 arquetipos, el orden narrativo de una secuencia de lanzamiento y un verificador por OCR que compara el render contra una story original. Usar cuando el usuario pida stories para Instagram, una secuencia de stories, replicar el diseño de unas stories de referencia, stories de un cliente, automatizar stories, o convertir fotos y vídeos en stories con texto. Si el MCP stories-studio está conectado, publicar ahí (ver la sección Publicar en Stories Studio).",
+      "source": "plugin",
+      "updatedAt": "2026-09-01T18:01:40.553978Z",
+      "creatorType": "user",
+      "backingPluginId": "plugin_01QbKY2BcBYwWRpM1ZjvuaoP"
+    },
+    {
+      "skillId": "theme-factory",
+      "name": "theme-factory",
+      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.654356Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "algorithmic-art",
+      "name": "algorithmic-art",
+      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.521631Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.499089Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "pptx",
+      "name": "pptx",
+      "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-22T18:00:37.886566Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "mcp-builder",
+      "name": "mcp-builder",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.618801Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-14T21:00:33.324012Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "canvas-design",
+      "name": "canvas-design",
+      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.576619Z",
+      "creatorType": "anthropic"
+    },
+    {
+      "skillId": "docx",
+      "name": "docx",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-23T04:00:28.352014Z",
+      "creatorType": "anthropic"
+    }
+  ]
+}
