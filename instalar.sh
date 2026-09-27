@@ -122,6 +122,13 @@ if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
 CLAUDE_BIN="$(command -v claude || echo "$HOME/.local/bin/claude")"
+# Que "claude" funcione en terminales nuevas: ~/.local/bin al PATH si no esta
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+  for rc in "$HOME/.zshrc" "$HOME/.bashrc"; do
+    grep -qs 'claude-cerebro: PATH' "$rc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"  # claude-cerebro: PATH\n' >> "$rc"
+  done
+  echo "  anadido ~/.local/bin al PATH (terminales nuevas)"
+fi
 
 # Ruflo como MCP (necesita Node). Si no hay Node, se avisa y se sigue.
 if command -v npx >/dev/null; then

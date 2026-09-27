@@ -154,6 +154,13 @@ if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
     Invoke-RestMethod https://claude.ai/install.ps1 | Invoke-Expression
 }
 
+# Que 'claude' funcione en terminales nuevas: .local\bin al PATH del usuario si no esta
+$LocalBin = Join-Path $HOME '.local\bin'
+$UserPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+if ((Test-Path $LocalBin) -and ("$UserPath" -notlike "*$LocalBin*")) {
+    [Environment]::SetEnvironmentVariable('Path', (("$UserPath".TrimEnd(';') + ';' + $LocalBin).TrimStart(';')), 'User')
+    Write-Host '  anadido .local\bin al PATH (terminales nuevas)'
+}
 Refrescar-Path
 if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
     Write-Host '  Ruflo se conecta la proxima vez que lances esta linea (Claude aun no esta en el PATH)'
