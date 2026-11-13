@@ -34,6 +34,7 @@ NO_SECRETOS = re.compile(r"(?i)^(?:process\.env|os\.environ|\$\{|<|your|tu_|xxx|
 URL_EJEMPLO = re.compile(r"(?i)@(?:localhost|127\.0\.0\.1|0\.0\.0\.0|host|db|postgres|example|your|test)|://(?:user|username|postgres|test|admin):(?:pass|password|postgres|test|secret)@")
 
 PERMITIDOS = [
+    "TOKEN = generateToken()",  # superpowers/brainstorming: token aleatorio generado al arrancar el servidor local
     # Falsos positivos revisados a mano el 26-sep-2026 (código de skills de terceros)
     "_get_api_key(provider)", "get_bing_api_key()", "get_moz_api_key()", "_get_credentials()",
     "STOREFRONT_TOKEN,", "$GOOGLE_API_KEY", "URLPatternComponentResult", "-----BEGIN PRIVATE KEY-----\\n...\\n",
