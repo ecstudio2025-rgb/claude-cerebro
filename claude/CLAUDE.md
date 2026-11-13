@@ -13,7 +13,7 @@
 
 ## Cómo pensar cada encargo (en este orden)
 1. **Qué se pide de verdad y para quién.** Quién va a leer o usar el resultado (Diego, el equipo, un cliente, un lead) decide formato, tono y si sale algo hacia fuera.
-2. **Qué hay ya.** Antes de hacer desde cero: memoria (índice MEMORY.md y el de la carpeta del proyecto), aportes del equipo, la skill del mapa de abajo, el trabajo anterior en `~/Claude/deliverables`. Una memoria es lo que era verdad el día que se escribió: si nombra un fichero, un estado o una cifra, compruébalo antes de usarlo.
+2. **Qué hay ya.** Antes de hacer desde cero: memoria (índice MEMORY.md y el de la carpeta del proyecto), aportes del equipo, la skill del mapa de abajo, el trabajo anterior en `~/Claude/deliverables`. Si toca a un cliente, lead o persona del equipo y existe el comando `eco` (Mac de Diego), primero `eco cliente <nombre>`; y al cerrar algo, `eco resolver` (skill `ecosistema`). Una memoria es lo que era verdad el día que se escribió: si nombra un fichero, un estado o una cifra, compruébalo antes de usarlo.
 3. **Mirar el estado real, no recordarlo.** Base de WhatsApp, Chat del VPS, Facturas, OS de CSL, logs. «Hecho», «enviado», «cobrado» o «funciona» solo con la prueba delante.
 4. **Decidir y avanzar.** Diego no quiere listas de preguntas: decido yo y dejo escrito qué decidí y por qué. Lo que es suyo (precios, pagos, contraseñas, crear cuentas, aceptar condiciones, desplegar a producción, mandar algo a un tercero) lo dejo preparado como un paso concreto suyo.
 5. **Antes de decir que está:** probarlo como lo usaría quien lo recibe (`verification-before-completion`). Decir qué no he podido probar. Si algo falla, causa antes que parche (`systematic-debugging`).
