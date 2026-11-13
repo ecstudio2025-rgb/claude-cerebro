@@ -7,13 +7,21 @@
 #
 # Las carpetas quedan enlazadas al repo local: volver a lanzar la linea de arriba actualiza todo.
 # Lo que ya hubiera en ~/.claude con el mismo nombre se renombra a .bak-FECHA, nunca se borra.
-# Clave del equipo sin preguntar: CEREBRO_CLAVE=xxxx antes de bash.
+# Clave del equipo sin preguntar: CEREBRO_CLAVE=xxxx antes de bash. Se guarda en ~/.config/claude-cerebro-equipo/clave.
+# Se actualiza solo cada dia a las 09:00 (launchd en Mac, cron en Linux) con CEREBRO_AUTO=1:
+# baja lo nuevo del repo, la memoria de Diego y los aportes del equipo, sin preguntar nada.
 set -euo pipefail
+# Si se lanza desde el propio repo, corre desde una copia: el git pull de abajo puede reescribir este fichero.
+if [[ -f "${BASH_SOURCE[0]:-}" && -z "${CEREBRO_COPIA:-}" ]]; then
+  c="$(mktemp)"; cp "${BASH_SOURCE[0]}" "$c"; CEREBRO_COPIA=1 exec bash "$c" "$@"
+fi
 
 REPO_URL="${CEREBRO_REPO:-https://github.com/ecstudio2025-rgb/claude-cerebro.git}"
 PRIVADO_URL="https://socialimpulso.es/cerebro/privado.tar.gz"
 REPO="$HOME/claude-cerebro"
 CLAUDE="$HOME/.claude"
+CONF="$HOME/.config/claude-cerebro-equipo"
+AUTO="${CEREBRO_AUTO:-}"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 
 command -v git >/dev/null || { echo "Falta git. En Mac: xcode-select --install  |  En Linux: sudo apt install git"; exit 1; }
@@ -29,7 +37,8 @@ mkdir -p "$CLAUDE"
 
 # --- Capa privada (antes de enlazar: se mete dentro de la copia local, sin tocar git) ---
 CLAVE="${CEREBRO_CLAVE:-}"
-if [[ -z "$CLAVE" && -r /dev/tty ]]; then
+[[ -z "$CLAVE" && -s "$CONF/clave" ]] && CLAVE="$(cat "$CONF/clave")"
+if [[ -z "$CLAVE" && -z "$AUTO" && -r /dev/tty ]]; then
   printf "Clave del equipo para la memoria de Diego (Enter para saltar): "
   read -rs CLAVE </dev/tty || true; echo
 fi
@@ -42,6 +51,7 @@ if [[ -n "$CLAVE" ]]; then
     (cd "$PRIV/claude" && find . -type f) | sed 's|^\./|claude/|' > "$REPO/.git/info/exclude"
     cp -R "$PRIV/claude/." "$REPO/claude/"
     echo "  capa privada instalada en $PRIV"
+    mkdir -p "$CONF"; chmod 700 "$CONF"; printf '%s' "$CLAVE" > "$CONF/clave"; chmod 600 "$CONF/clave"
   else
     echo "  clave incorrecta o sin conexion: sigo sin la capa privada"
   fi
@@ -92,6 +102,16 @@ Las contraseñas y tokens estan tachados a proposito: pideselos a Diego, no los 
 EOF
   echo "  memoria de Diego enlazada en CLAUDE.md"
 fi
+if [[ -f "$PRIV/aportes/INDICE.md" ]]; then
+  cat >> "$CLAUDE/CLAUDE.md" <<EOF
+
+## Aportes del equipo (lo que ha aprendido el Claude de cada uno)
+Indice en $PRIV/aportes/INDICE.md; cada linea apunta a una nota de esa carpeta. Miralo antes de resolver algo que otro ya resolvio.
+Cuando aprendas algo que le sirva al resto (un procedimiento que funciono, un fallo y su arreglo, un criterio de cliente), usa la skill cerebro-aportar.
+EOF
+fi
+
+if [[ -n "$AUTO" ]]; then echo "Actualizacion automatica hecha $(date '+%F %H:%M')"; exit 0; fi
 
 echo "Ajustes:"
 python3 - "$REPO/settings.windows.json" "$CLAUDE/settings.json" <<'PY'
@@ -138,6 +158,30 @@ if command -v npx >/dev/null; then
   fi
 else
   echo "  Sin Node.js: Ruflo queda para luego (instala Node LTS de nodejs.org y repite esta linea)"
+fi
+
+# Actualizacion diaria automatica (09:00): repo, memoria de Diego y aportes del equipo
+LINEA="CEREBRO_AUTO=1 bash $REPO/instalar.sh"
+if [[ -n "${CEREBRO_SIN_PROGRAMAR:-}" ]]; then
+  echo "  (sin programar la actualizacion diaria)"
+elif [[ "$(uname)" == "Darwin" ]]; then
+  PL="$HOME/Library/LaunchAgents/com.ecs.claude-cerebro.plist"
+  mkdir -p "$HOME/Library/LaunchAgents" "$HOME/Library/Logs"
+  cat > "$PL" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.ecs.claude-cerebro</string>
+  <key>ProgramArguments</key><array><string>/bin/bash</string><string>-lc</string><string>$LINEA</string></array>
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>$HOME/Library/Logs/claude-cerebro.log</string>
+  <key>StandardErrorPath</key><string>$HOME/Library/Logs/claude-cerebro.log</string>
+</dict></plist>
+EOF
+  launchctl unload "$PL" 2>/dev/null || true; launchctl load "$PL" && echo "  actualizacion diaria 09:00 activada"
+elif command -v crontab >/dev/null; then
+  ( crontab -l 2>/dev/null | grep -v 'claude-cerebro/instalar.sh'; echo "0 9 * * * $LINEA >> \$HOME/.claude-cerebro.log 2>&1" ) | crontab - \
+    && echo "  actualizacion diaria 09:00 activada (cron)"
 fi
 
 echo
