@@ -45,7 +45,20 @@ for d in skills agents commands kb-mercado hook-vault templates; do
   if grep -qxF "$d/" "$PRIV/excluir.txt"; then rm -rf "claude/$d"; continue; fi
   extra=()
   while IFS= read -r x; do extra+=("$x"); done < <(excluir_de "$d")
+  # Enlaces a carpetas que macOS no deja leer de noche (p. ej. ~/Documents desde launchd):
+  # se saltan y se conserva la copia que ya hay en el repo, en vez de abortar o borrarla.
+  salvar=(); aparte="$(mktemp -d)"
+  for e in "$SRC/$d"/*; do
+    [[ -L "$e" ]] || continue
+    if ! ls "$e/" >/dev/null 2>&1; then
+      n="$(basename "$e")"; echo "  aviso: $d/$n no se puede leer ahora; se mantiene la copia anterior"
+      extra+=("--exclude=/$n"); salvar+=("$n")
+      [[ -e "claude/$d/$n" ]] && mv "claude/$d/$n" "$aparte/"
+    fi
+  done
   rsync -aL --delete --delete-excluded "${EXCL[@]}" ${extra[@]+"${extra[@]}"} "$SRC/$d/" "claude/$d/"
+  for n in ${salvar[@]+"${salvar[@]}"}; do [[ -e "$aparte/$n" ]] && mv "$aparte/$n" "claude/$d/"; done
+  rm -rf "$aparte"
 done
 
 # Borrados de lineas/parrafos y comprobacion de nombres de clientes
