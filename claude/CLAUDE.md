@@ -72,3 +72,7 @@ When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` 
 - Para entender un concepto: `graphify explain "<concepto>"`.
 - Tras modificar código: `graphify update .` para mantener el grafo actualizado (sin coste LLM).
 - El global graph en `~/.graphify/global-graph.json` tiene todos los proyectos de Documents/Claude.
+
+## Cerebro del equipo: aportes y herramientas de IA
+- Aportes del equipo (lo que el Claude de cada uno ha aprendido): índice en `~/.claude/cerebro-aportes/INDICE.md` en el Mac de Diego, o `~/.claude/cerebro-privado/aportes/INDICE.md` en el resto. Míralo antes de resolver algo que otro ya puede haber resuelto. Para aportar: skill `cerebro-aportar`.
+- Antes de buscar o instalar una herramienta, skill, MCP o repo de IA nuevo, mira la skill `ia-practica-revolutia` (200 entradas por área, con lo ya instalado y lo descartado). Nada que añada hooks de arranque o toque settings.json se activa sin que lo vea Diego.
