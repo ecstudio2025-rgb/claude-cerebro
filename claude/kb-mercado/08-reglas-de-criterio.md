@@ -133,6 +133,13 @@ datos que parecen contradecirse solo miden situaciones distintas.
 | "Subió la apertura un 20% con el asunto nuevo" | ¿Descontando Apple MPP? Infla ~50-60% de las aperturas. Mide clics |
 | "Encadenamos micro-sís" | Foot-in-the-door: efectos modestos, ninguna replicación igualó el original |
 | "Este quiz convierte 10 veces más que un opt-in" | Lo dicen los que venden software de quiz. El mecanismo vale, el múltiplo no |
+| "Si pagan aunque sea 7 €, se comprometen" | Dos ensayos de campo no encontraron coste hundido. Si rinde, es por selección. Ver [29](29-oferta-trafico-frio.md) |
+| "Un comprador es un comprador, vale 10 veces más" | Selección sin grupo de control. Medir por cohorte de 90 días |
+| "Apilamos bonus hasta que el valor supere el precio" | La gente promedia: el bonus flojo baja el valor del conjunto |
+| "Ponle garantía ×2 y se vende sola" | Con ticket alto y vendedor desconocido la generosidad deja de creerse. Necesita algo verificable al lado |
+| "Haz una encuesta de precio a tu audiencia" | La disposición declarada supera a la real un 21 % de media, más en servicios caros |
+| "El A/B de Meta dice que gana la oferta B" | Cada brazo ve otro público (divergent delivery). Decide la llamada cualificada y el cierre |
+| "Ofrece prueba gratis de 30 días" | Clientes con un 59 % menos de valor; la renovación automática espanta un 35 % |
 
 ---
 
@@ -243,4 +250,7 @@ Lo que hay que revisar antes: [06-benchmarks.md](06-benchmarks.md) y
 [04-redes-sociales.md](04-redes-sociales.md), porque dependen de decisiones de Meta y de datos que
 envejecen en meses. Los ficheros 01, 02, 03 y 05 aguantan años.
 
-Compilado el 8 de agosto de 2026.
+El fichero [29](29-oferta-trafico-frio.md) tiene su apartado 8 (políticas de Meta y Google) en la misma
+revisión trimestral.
+
+Compilado el 8 de agosto de 2026. Oferta para tráfico frío añadida el 1 de octubre de 2026.

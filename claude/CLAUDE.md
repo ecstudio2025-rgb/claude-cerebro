@@ -11,6 +11,12 @@
 - Keep solutions simple and direct.
 - User instructions always override this file.
 
+## Mensajes que Diego va a mandar: listos para copiar y pegar
+Cuando le prepare un mensaje para que lo envíe él (al equipo, a un cliente, a quien sea):
+- Va dentro de UN bloque de código, tal cual se pega: sin `>`, sin negritas de markdown, sin comentarios míos dentro. Si es una ráfaga, cada mensaje separado por una línea en blanco dentro del mismo bloque.
+- Al equipo, en imperativo: qué tiene que hacer cada uno («prepara», «sube», «confírmame»), no un relato de lo que hice yo. Contexto, solo el justo para que puedan actuar.
+- Mis notas o lo que tiene que decidir él van fuera del bloque, después y cortas.
+
 ## Redacción sin huella de IA (aplica a TODA la escritura, también a mi prosa de chat)
 Evita los patrones que delatan a una IA en cualquier texto que produzca para Diego: guiones, copys, títulos, emails, carruseles, propuestas y CTAs, y también mis respuestas de chat, análisis, resúmenes y narración. No solo el "texto de cliente". Aplica SIEMPRE salvo que pida algo neutro, plantilla, técnico, legal o formal.
 - Checklist y antídotos: `/Users/diego/.claude/anti-patrones-ia-redaccion.md`. Reléelo antes de textos largos.
@@ -30,6 +36,7 @@ Antes de opinar sobre mercado, oferta, precio, psicología de compra o por qué 
 - Reacción medida (retención, envíos) antes que opinión pedida, incluida la mía y la del cliente.
 - **Embudos y paid media**: antes de opinar sobre una cuenta, calcula MER de equilibrio (1 ÷ margen) y presupuesto mínimo de aprendizaje (CPA × 50 ÷ 7). Duplicar presupuesto nunca duplica resultado. Ningún canal se defiende con su propio ROAS, se defiende con holdout. Menos conjuntos y más conceptos distintos (iteración ≠ diversidad). Antes de tocar la campaña, comprobar si contestan a los leads. Ficheros `13` a `18`.
 - **Nutrición y formatos**: en cada secuencia y propuesta, planteo la objeción y la refuto yo (inoculación, metaanálisis de 54 casos, protección paraguas, decae a las 2 semanas). La fricción es un mando, no un problema: menos fricción = más volumen y menos intención. El copy se ajusta al requisito de persuasión. Mide clics, no aperturas (Apple MPP infla el 50-60%). Ficheros `19` y `20`.
+- **Oferta para tráfico frío**: antes de diseñar o juzgar una oferta de entrada, garantía, bonus, plazo o test de oferta, `29-oferta-trafico-frio.md`. No hay comparativa causal publicada entre embudos; se decide por euros cobrados por euro de anuncios en cohorte de 90 días.
 - Aplicación a ECSSTUDIO y al ICP en `07-aplicado-a-diego.md`.
 - Caduca antes: `15-plataformas-mecanica-real.md` (revisar cada trimestre), `06-benchmarks.md` y `04-redes-sociales.md`. Compilada el 8-ago-2026.
 

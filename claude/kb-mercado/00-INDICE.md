@@ -53,6 +53,7 @@ lo digo al proponerla en vez de venderla como ley.
 | [18-oferta-precio-y-escalado.md](18-oferta-precio-y-escalado.md) | Ecuación de valor, empaquetado, el señuelo que no replica, cómo escalar sin romper, bucles contra embudo |
 | [19-nutricion-y-secuencias.md](19-nutricion-y-secuencias.md) | Inoculación (lo mejor del bloque), el micro-sí sobrevalorado, secuenciación de anuncios, correo real, canales de mensajería |
 | [20-formatos-de-conversion.md](20-formatos-de-conversion.md) | Conversacional contra formulario, quiz, vídeo en landing (no es lo que crees), copy largo o corto, fricción como mando |
+| [29-oferta-trafico-frio.md](29-oferta-trafico-frio.md) | **Oferta para tráfico frío.** Cuánto pedir en el primer paso, precio cero, el coste hundido que no aparece, garantías con desconocidos, bonus que restan, plazos reales, high-ticket, cómo testear con poco volumen y qué no se puede prometer en España. Fuentes en `fuentes/oferta-frio/`. **Apartado 8 caduca: revisar trimestral** |
 
 ### Bloque de SEO
 
