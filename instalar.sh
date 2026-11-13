@@ -52,6 +52,7 @@ if [[ -n "$CLAVE" ]]; then
     cp -R "$PRIV/claude/." "$REPO/claude/"
     echo "  capa privada instalada en $PRIV"
     mkdir -p "$CONF"; chmod 700 "$CONF"; printf '%s' "$CLAVE" > "$CONF/clave"; chmod 600 "$CONF/clave"
+    printf '%s' "${PRIVADO_URL%privado.tar.gz}aportes/" > "$CONF/buzon"
   else
     echo "  clave incorrecta o sin conexion: sigo sin la capa privada"
   fi
