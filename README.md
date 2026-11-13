@@ -102,11 +102,21 @@ Si una tarea necesita algo de la columna derecha, Claude te avisará. Pídeselo 
 
 La memoria de Diego es de solo lectura. Lo que Claude aprenda trabajando contigo se guarda en tu propia memoria, aparte.
 
+## El cerebro aprende con el uso
+
+Desde el 13 de noviembre el cerebro es uno para todo el equipo y crece solo:
+
+1. **Tú aportas.** Cuando resuelvas algo que a otro le va a tocar repetir (un paso de GHL que costó encontrar, un fallo y su arreglo, una regla de un cliente, una herramienta que funciona), dile a Claude *«apórtalo al cerebro»*. Usa la skill `cerebro-aportar`: escribe una nota corta, comprueba que no lleve claves ni datos personales y la sube al buzón del equipo.
+2. **Por la noche se junta.** A las 04:30 el Mac de Diego recoge los aportes, aparta los que lleven algo con pinta de clave y lo empaqueta con su memoria.
+3. **A las 09:00 te llega.** Tu equipo se actualiza solo cada mañana: skills nuevas, memoria de Diego y aportes de todos. En el Claude de cada uno aparece el índice de aportes, así que antes de resolver algo mira si otro ya lo resolvió.
+
+Ejemplo: hoy ha entrado `ia-practica-revolutia`, con 200 herramientas, repos y técnicas de IA sacadas de 217 reels, más 45 skills de diseño, web y desarrollo. Pregúntale *«¿hay alguna herramienta para X?»* y mira ahí primero.
+
 ## Actualizar
 
-Diego añade skills y memoria casi a diario. Para traerte lo último, vuelve a lanzar **la misma línea del paso 1**. Tus cosas no se borran: si algo choca de nombre, lo guarda como `.bak-FECHA`.
+Se actualiza solo cada día a las 09:00 (con el ordenador encendido). Si quieres traerte lo último en el momento, vuelve a lanzar **la misma línea del paso 1**. Tus cosas no se borran: si algo choca de nombre, lo guarda como `.bak-FECHA`.
 
-Hazlo una vez por semana o cuando Diego avise en el grupo.
+En Windows la actualización automática aún no está: lanza la línea del paso 1 una vez por semana.
 
 ## Si algo falla
 
