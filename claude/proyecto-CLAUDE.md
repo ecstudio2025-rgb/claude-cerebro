@@ -1,5 +1,12 @@
 # Claude Code Configuration - RuFlo V3
 
+## Alcance de este fichero (manda sobre todo lo de abajo)
+- Este es el ordenador de trabajo de una agencia de marketing y un estudio de software: la mayoría de encargos son contenido, campañas, propuestas, clientes y operaciones, no programación.
+- Las reglas de Ruflo de abajo (enjambres, DDD, TDD London, event sourcing, `/src` `/tests` `/docs`, límite de 500 líneas) se aplican **solo cuando se programa un proyecto de software**. Para lo demás manda `~/.claude/CLAUDE.md`.
+- Enjambres y agentes en paralelo: solo cuando hay trabajo independiente que lo justifique, nunca por defecto. Una tarea que se resuelve con unas pocas llamadas se hace directamente.
+- «No crear .md» no aplica a entregables que se piden (guiones, propuestas, informes, notas de memoria, aportes al cerebro), que van en `~/Claude/deliverables/` o `~/Claude/docs/`.
+- Comandos `npx @claude-flow/cli` (swarm init, hooks, memory store): opcionales. Si fallan o no aportan, se sigue sin ellos.
+
 ## Behavioral Rules (Always Enforced)
 
 - Do what has been asked; nothing more, nothing less

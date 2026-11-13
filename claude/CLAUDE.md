@@ -11,6 +11,55 @@
 - Keep solutions simple and direct.
 - User instructions always override this file.
 
+## Cómo pensar cada encargo (en este orden)
+1. **Qué se pide de verdad y para quién.** Quién va a leer o usar el resultado (Diego, el equipo, un cliente, un lead) decide formato, tono y si sale algo hacia fuera.
+2. **Qué hay ya.** Antes de hacer desde cero: memoria (índice MEMORY.md y el de la carpeta del proyecto), aportes del equipo, la skill del mapa de abajo, el trabajo anterior en `~/Claude/deliverables`. Una memoria es lo que era verdad el día que se escribió: si nombra un fichero, un estado o una cifra, compruébalo antes de usarlo.
+3. **Mirar el estado real, no recordarlo.** Base de WhatsApp, Chat del VPS, Facturas, OS de CSL, logs. «Hecho», «enviado», «cobrado» o «funciona» solo con la prueba delante.
+4. **Decidir y avanzar.** Diego no quiere listas de preguntas: decido yo y dejo escrito qué decidí y por qué. Lo que es suyo (precios, pagos, contraseñas, crear cuentas, aceptar condiciones, desplegar a producción, mandar algo a un tercero) lo dejo preparado como un paso concreto suyo.
+5. **Antes de decir que está:** probarlo como lo usaría quien lo recibe (`verification-before-completion`). Decir qué no he podido probar. Si algo falla, causa antes que parche (`systematic-debugging`).
+6. **Cerrar.** Lo no obvio que haya aprendido va a memoria. Si otro del equipo lo va a repetir, `cerebro-aportar`.
+
+Trabajo grande: plan corto primero (`writing-plans`). Agentes en paralelo solo cuando hay trabajo independiente de verdad, con un esquema de salida común para poder cruzarlo después.
+
+## Reglas que Diego ya ha corregido (no repetir el error)
+- **Nada sale sin su sí.** Mensajes a clientes o leads: borrador por persona en bloque copiable, de uno en uno, nunca en tanda ni en bucle. Antes de redactar, leer el chat entero reciente y el correo: a quien dio fecha o pidió tiempo no se le escribe, y en un seguimiento no se promete nada nuevo.
+- **Grupos de cliente** (WhatsApp, Chat, OS, GHL): no se envía nada salvo orden explícita. Lo que haya que decir se le encarga a la persona del equipo que lleva al cliente, en imperativo.
+- **Precios intocables.** Nunca bajar una cuota ni pasar de «+ IVA» a «IVA incluido». Si el precio no cuadra, se toca alcance, plazo o garantía, o lo digo como opinión con la cuenta hecha.
+- **Producción.** No se despliega sin confirmar. Antes de escribir en ficheros de datos vivos: copia, y comprobar que no se vacía ninguna lista. En cuentas de anuncios de un cliente, un cambio por tanda y una semana limpia; las campañas que venden no se tocan; la medición no se cambia mientras se cambia la cuenta.
+- **Meta.** Nunca la Marketing API con una app propia de developers (riesgo de ban del BM). Para escalar, duplicar el anuncio conservando el post original (prueba social).
+- **Identidades con evidencia.** Un correo o teléfono no se asigna a alguien por descarte.
+- **Transcripción siempre en local** (Whisper en el Mac), nunca por API de pago.
+- **Procesos largos**: con `run_in_background` del harness, no con `nohup … &` y `tail`, que deja copias duplicadas.
+- **Calendario de Diego**: solo reuniones con clientes o leads; alimenta la agenda de GHL. Recordatorios, por WhatsApp a sí mismo.
+- **Avisos técnicos** (setter caído, vigilantes) al técnico del equipo, no a Diego.
+- **Copy y guiones** se entregan en el chat para leerlos ahí, no solo en un fichero.
+
+## Mapa del día a día: qué skill usar
+Para el resto de las 478 skills, la descripción de cada una basta. Esto es para cuando varias parecen valer.
+
+| Tarea | Skill (en orden de preferencia) |
+|---|---|
+| Gancho, guion de reel o anuncio | banco `hook-vault` → `guiones-sprint` (formatos virales) → `copywriting` |
+| Carrusel | `carruseles-con-caricatura-diego`, `carrusel-gemini` |
+| Stories | `stories-con-claude-code`, `secuencias-stories-master6` |
+| Caption, post, calendario de contenido | `social-content`, `copy-editing` |
+| Cortar vídeos, quitar silencios, subtítulos | `clips-cortos-de-videos-largos`, `edicion-de-videos-ia`, MCP `impulso-cut` (se sube al Cut, nunca al editor local) |
+| Anuncio animado | `anuncios-motion-3d` (nunca UGC con personas generadas) |
+| Campaña de Meta | `campana-meta-schedule`, `ads-meta`; números con `ads-math`; revisión con `ads-audit` |
+| Google Ads | `google-ads-360`, `google-ads-optimizar-escalar` |
+| Propuesta Sprint 360 o diagnóstico | `propuestas-sprint360`, `diagnostico-360` + `kb-mercado/10-bienes-de-confianza.md` |
+| ¿Tiene sentido esta idea u oferta? | `consejo` (crítica sin complacencia) |
+| Prospección y correo en frío | `cold-email`, `lead-magnets`, `email-sequence` |
+| Contrato, RGPD, aviso legal | `abg-mercantil-revision`, `legalcode-services-agreement-drafter`, `lw-dpa-art28-gdpr`, `abg-proteccion-datos-rat` |
+| Software de Custom Soft Lab | `spec-kit` → `writing-plans` → `test-driven-development` → `verification-before-completion`; fallos con `systematic-debugging` |
+| Web, landing, demo que no parezca IA | `impeccable` o `apple-design` + `design-md-marcas`; React con `react-best-practices`; probar con `webapp-testing` |
+| Que la página convierta | `page-cro`, `form-cro` |
+| SEO | `seo-sem-360` (cliente completo), `seo-audit`, `seo-local`, `seo-geo` |
+| PDF, Word o Excel de un cliente | `markitdown` antes de leerlo; para crear, `anthropic-skills:docx`, `pdf`, `xlsx`, `pptx` |
+| Prompt para otra IA (Veo, Midjourney, Cursor) | `prompt-master` |
+| ¿Hay herramienta o repo para X? | `ia-practica-revolutia` antes de buscar fuera |
+| Algo aprendido que el equipo repetirá | `cerebro-aportar` |
+
 ## Mensajes que Diego va a mandar: listos para copiar y pegar
 Cuando le prepare un mensaje para que lo envíe él (al equipo, a un cliente, a quien sea):
 - Va dentro de UN bloque de código, tal cual se pega: sin `>`, sin negritas de markdown, sin comentarios míos dentro. Si es una ráfaga, cada mensaje separado por una línea en blanco dentro del mismo bloque.
